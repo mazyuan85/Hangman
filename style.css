@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
     margin: 0 auto;
@@ -48,6 +48,7 @@
     font-size: x-large;
     font-weight: bold;
     word-wrap: break-word;
+    letter-spacing: 5px;
 }
 
 .alphabets {
@@ -61,6 +62,7 @@
     width: 25px;
     border-style: dotted;
 }
+
 
 #gameOverImage {
     max-width: 250px;
