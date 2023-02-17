@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
+    flex-direction:column;
+}
+
+.startScreen {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 2.5em;
+    
+}
+
+.gameScreen {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 3em;
+    max-width: 320px;
+}
+
+.gameOverScreen {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 3em;
+    max-width: 320px;
+}
+
+.alphabetsRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.gameWord {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.alphabets {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    margin: 4px;
+    cursor:pointer;
+    box-sizing: border-box;
+    border: 1px black;
+    width: 25px;
+    border-style: dotted;
+}
+
+#gameOverImage {
+    max-width: 250px;
+    max-height: 250px;
+    height:auto;
+    width: auto;
+}

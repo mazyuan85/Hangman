@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degen Hangman</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <!-- Starting Screen-->
+        <div class="startScreen" id="startScreen">
+            <h1>Welcome To<br>Degen Hangman</h1>
+            <img src="assets/images/startscreen.png"/><br>
+            <h3>Complete 10 words to win!</h3>
+            <button id="startButton" onclick="startGame()">Start Game</button>
+        </div>
+        <!-- Game Screen -->
+        <div class="gameScreen" id="gameScreen">
+            <h1>Degen Hangman</h1>
+            <div class="gameWord" id="gameWord">
+                <p>_ _ _ _ _&nbsp; _ _ _ _</p>
+            </div>
+            <div id="gameImg"></div>
+            <div class="alphabetsContainer">
+                <div class="alphabetsRow">
+                    <div class="alphabets" id="a">A</div>
+                    <div class="alphabets" id="b">B</div>
+                    <div class="alphabets" id="c">C</div>
+                    <div class="alphabets" id="d">D</div>
+                    <div class="alphabets" id="e">E</div>
+                    <div class="alphabets" id="f">F</div>
+                    <div class="alphabets" id="g">G</div>
+                    <div class="alphabets" id="h">H</div>
+                    <div class="alphabets" id="i">I</div>
+                </div>
+                <div class="alphabetsRow">
+                    <div class="alphabets" id="j">J</div>
+                    <div class="alphabets" id="k">K</div>
+                    <div class="alphabets" id="l">L</div>
+                    <div class="alphabets" id="m">M</div>
+                    <div class="alphabets" id="n">N</div>
+                    <div class="alphabets" id="o">O</div>
+                    <div class="alphabets" id="p">P</div>
+                    <div class="alphabets" id="q">Q</div>
+                    <div class="alphabets" id="r">R</div>
+                </div>
+                <div class="alphabetsRow">
+                    <div class="alphabets" id="s">S</div>
+                    <div class="alphabets" id="t">T</div>
+                    <div class="alphabets" id="u">U</div>
+                    <div class="alphabets" id="v">V</div>
+                    <div class="alphabets" id="w">W</div>
+                    <div class="alphabets" id="x">X</div>
+                    <div class="alphabets" id="y">Y</div>
+                    <div class="alphabets" id="z">Z</div>
+                </div>   
+            </div> 
+        </div>
+        <!-- GameOver Screen-->
+        <div class= "gameOverScreen" id="gameOverScreen">
+            <div id="gameOverHeader"><h1>You Win!</h1></div>
+            <div><img id="gameOverImage" src="assets/images/pepewin.gif"/></div>
+            <button id="restartButton" onclick="reloadGame()">Reload Game</button>
+        </div>
+    </div>
+</body>
+</html>
