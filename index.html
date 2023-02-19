@@ -19,9 +19,10 @@
         </div>
         <!-- Game Screen -->
         <div class="gameScreen" id="gameScreen">
-            <h1>Degen Hangman</h1>
+            <div><h1>Degen Hangman</h1></div>
+            <div id="score"><h3>Your Current Score: 0</h3></div>
             <div class="gameWord" id="gameWord"></div>
-            <div id="gameImg"><img src="assets/images/lvl0.png"/></div>
+            <div><img id="gameImage" src="assets/images/lvl0.png"/></div>
             <div class="alphabetsContainer">
                 <div class="alphabetsRow">
                     <div class="alphabets" id="a">A</div>
@@ -61,7 +62,7 @@
         <div class= "gameOverScreen" id="gameOverScreen">
             <div id="gameOverHeader"><h1>placeholder</h1></div>
             <div><img id="gameOverImage" src=""/></div>
-            <button id="restartButton" onclick="reloadGame()">Reload Game</button>
+            <button id="restartButton" onclick="reloadScreen()">Reload Game</button>
         </div>
     </div>
 </body>

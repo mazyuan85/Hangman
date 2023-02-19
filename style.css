@@ -63,6 +63,16 @@
     border-style: dotted;
 }
 
+.wrongLetter {
+    text-decoration: line-through;
+    text-decoration-style: double;
+    text-decoration-color: darkred;
+    background-color: darkgray;
+}
+
+.rightLetter {
+    background-color: aquamarine;
+}
 
 #gameOverImage {
     max-width: 250px;
