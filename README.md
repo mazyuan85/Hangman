@@ -32,7 +32,7 @@ The game is deployed on Github pages: https://mazyuan85.github.io/Hangman
 
 ## How To Play
 
-![How To Play](https://github.com/mazyuan85/Hangman/assets/images/how_to_play.png?raw=true)
+![How To Play](https://github.com/mazyuan85/Hangman/assets/images/Readme/how_to_play.png?raw=true)
 
 At the beginning of the game, every letter in the word or phrase will appear as an underscore. The player will then click on an letter between A and Z and if the letters appears in the word or phrase, the corresponding underscore will reveal the letter accordingly. 
 
@@ -42,7 +42,7 @@ The player wins the game by guessing 10 words consecutively.
 
 ## Creating The Wireframe
 
-![Wireframe](https://github.com/mazyuan85/Hangman/assets/images/wireframe.png?raw=true)
+![Wireframe](https://github.com/mazyuan85/Hangman/assets/images/Readme/wireframe.png?raw=true)
 
 The game was designed to be played on most legacy devices with an emphasis on comptability thus the maximum width was set to 320 pixels.
 
