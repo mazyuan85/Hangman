@@ -72,7 +72,7 @@ The game is then split into 3 simple wireframe stages: Starting Screen -> Game S
 
 ## Summary
 
-As much as this is a course-work project where our school is grading the code based upon its functionality and bug-free status, a game should be intrinsically fun and enjoyable. This is a subtle combination of content, gameplay, graphics, and replayability.
+As much as this is a course-work project where our school is grading the code based upon its functionality and bug-free status, a game should also be intrinsically fun and enjoyable. This is attained through a subtle combination of content, gameplay, graphics, and replayability.
 
 With my limited knowledge as someone who is just embarking on his programming journey, there is definitely much room for improvement. But for now, I hope you enjoy Degen Hangman.
 
