@@ -1,33 +1,36 @@
-const wordDB = ["paperhands", "shilling", "gm", "ded", "doge", "down bad", "to the moon", "wagmi", "kek", "vitalik buterin", "ethereum", "solana", "binance", "kucoin", "pepe", "twitter", "bored ape yacht club", "opensea", "bitcoin", "degen", "blockchain", "dao", "dyor", "defi", "fud", "gas", "hodl", "ledger", "satoshi nakamoto", "whale", "dolphin", "airdrop", "bag holder", "wen", "wen lambo", "memecoin", "pump and dump", "scalping", "seed phrase", "metamask", "phantom", "floor price", "delist", "pamp", "sweep", "ngmi", "ape", "nft", "cryptopunks", "moonbirds", "azuki", "doodles", "mutant ape yacht club", "otherside", "lfg", "rekt", "alpha", "mint", "ama", "raid", "town hall", "announcement", "flex", "collaboration", "poll", "meta", "cope", "hopium", "copium", "normie"];
+/*----- Constants -----*/
+const wordDB = ["paperhands", "shilling", "gm", "ded", "dogecoin", "down bad", "to the moon", "wagmi", "kek", "vitalik buterin", "ethereum", "solana", "binance", "kucoin", "pepe", "twitter", "bored ape yacht club", "opensea", "bitcoin", "degen", "blockchain", "dao", "dyor", "defi", "fud", "gas war", "hodl", "ledger", "satoshi nakamoto", "whale", "dolphin", "airdrop", "bag holder", "wen lambo", "memecoin", "pump and dump", "scalping", "seed phrase", "metamask", "phantom", "floor price", "delist", "pamp", "sweep", "ngmi", "ape", "nft", "cryptopunks", "moonbirds", "azuki", "doodles", "mutant ape yacht club", "otherside", "lfg", "rekt", "alpha", "mint", "ask me anything", "raid", "town hall", "announcement", "flex", "collaboration", "meta", "cope", "hopium", "copium", "normie", "fomo", "halving", "market cap", "private key", "bagholder", "diamond hands", "flippening", "rug pull", "shiba inu"];
+const MAX_TRIES = 8;
+const wordsNeededToWin = 10;
+
+/*----- State Variables -----*/
 const game = {
     gameWon: false,
     wordsGuessed: 0,
-    wordsNeededToWin: 10,
     wrongGuesses: 0,
     guessedAlphabets: [],
-    maxtries: 8,
+    wordCompletionTimer: 0,
+    checkWinTimer: 0,
 };
 
+/*----- Cached Elements -----*/
 const startScreen = document.getElementById("startScreen");
 const gameScreen = document.getElementById("gameScreen");
 const gameOverScreen = document.getElementById("gameOverScreen");
 const startButton = document.getElementById("startButton");
 const restartButton = document.getElementById("restartButton");
 const alphabetButtons = document.querySelectorAll(".alphabets");
+const gameOverWord = document.getElementById("gameOverWord");
 
+// Game Start
 function init() {
     resetVariables();
     reloadScreen();
-    clearClasses();
-    wordDBRandomiser();
-    wordPicker();
-    maskWordState();
     renderAll();
 };
 init ();
 
 // Render Functions
-
 function renderAll() {
     renderGameWord();
     renderImages();
@@ -49,16 +52,20 @@ function renderWordsGuessed () {
     score.innerHTML = `<h3>Your current score is: ${game.wordsGuessed}</h3>`;
 };
 
+
 // Game Functions
 alphabetButtons.forEach(button => {
     button.addEventListener("click", handleClick);
     function handleClick(evt) {
         let alphabet = evt.target.textContent;
-        updateState(alphabet, button);
+        if (game.wrongGuesses < MAX_TRIES) {
+            updateState(alphabet, button);
+        }
         renderAll();
-        checkWordCompletion();
-        // checkWin();
-        setTimeout(checkWin, 5000);
+        clearTimeout(game.wordCompletionTimer);
+        clearTimeout(game.checkWinTimer);
+        game.wordCompletionTimer = setTimeout(checkWordCompletion, 1500);
+        game.checkWinTimer = setTimeout(checkWin, 1500);
     }; 
 });
 
@@ -94,7 +101,7 @@ function wordDBRandomiser() {
         return mapDB;
     };
     let shuffledDB = shuffle(mapDB);
-    shuffledResult = shuffledDB.slice(0, game.wordsNeededToWin);
+    shuffledResult = shuffledDB.slice(0, wordsNeededToWin);
     return shuffledResult;
 };
 
@@ -133,20 +140,12 @@ function checkWordCompletion() {
     };
 };
 
-function clearClasses() {
-    game.wrongGuesses = 0;
-    const allAlphabets = document.querySelectorAll(".alphabets");
-    allAlphabets.forEach(function(alphabet) {
-        alphabet.classList.remove("wrongLetter", "rightLetter");
-    });
-};
-
 function checkWin() {
-    if (game.wordsGuessed === game.wordsNeededToWin) {
+    if (game.wordsGuessed === wordsNeededToWin) {
         game.gameWon = true;
         let gameWon = game.gameWon;
         gameOver(gameWon);
-    } else if (game.wrongGuesses === game.maxtries) {
+    } else if (game.wrongGuesses === MAX_TRIES) {
         gameOver();
     };
 };
@@ -157,12 +156,12 @@ function gameOver(gameWon) {
     if (gameWon) {
         gameOverHeader.innerHTML = "<h1>You Win!</h1>";
         gameOverImage.setAttribute("src", "assets/images/pepewin.gif");
-        endGame();
     } else {
         gameOverHeader.innerHTML = "<h1>You Lose!</h1>";
         gameOverImage.setAttribute("src", "assets/images/pepelose.gif");
-        endGame();
     };
+    showGameOverWord();
+    endScreen();
 };
 
 // Auxiliary Transition Functions
@@ -173,16 +172,25 @@ function reloadScreen() {
 
  };
 
-function startGame() {
+function startingScreen() {
     startScreen.style.display = "none";
     gameScreen.style.display = "block";
     gameOverScreen.style.display = "none";
+    renderAll();
 };
 
-function endGame() {
+function endScreen() {
     startScreen.style.display = "none";
     gameScreen.style.display = "none";
     gameOverScreen.style.display = "block";
+};
+
+function clearClasses() {
+    game.wrongGuesses = 0;
+    const allAlphabets = document.querySelectorAll(".alphabets");
+    allAlphabets.forEach(function(alphabet) {
+        alphabet.classList.remove("wrongLetter", "rightLetter");
+    });
 };
 
 function resetVariables () {
@@ -190,9 +198,20 @@ function resetVariables () {
     game.wrongGuesses = 0;
     game.gameWon = false;
     game.wordsGuessed = 0;
+    gameOverWord.innerHTML = "";
+    clearClasses();
+    wordDBRandomiser();
+    wordPicker();
+    maskWordState();
 };
 
-startButton.addEventListener("click", startGame);
-restartButton.addEventListener("click", init);
+function showGameOverWord () {
+    if (game.gameWon === true) {
+        gameOverWord.innerHTML = `<h3>feels good man</h3>`;
+    } else {
+        gameOverWord.innerHTML = `<h3>The word was: ${wordChosen}</h3>`;
+    }
+};
 
-// to do: to add losing word to gameover screen
+startButton.addEventListener("click", startingScreen);
+restartButton.addEventListener("click", init);

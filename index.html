@@ -13,14 +13,15 @@
         <!-- Starting Screen-->
         <div class="startScreen" id="startScreen">
             <h1>Welcome To<br>Degen Hangman</h1>
-            <img src="assets/images/startscreen.png"/><br>
+            <br>
+            <img src="assets/images/startscreen.png"/>
             <h3>Complete 10 words to win!</h3>
-            <button id="startButton" onclick="startGame()">Start Game</button>
+            <button id="startButton" onclick="startingScreen()">Start Game</button>
         </div>
         <!-- Game Screen -->
         <div class="gameScreen" id="gameScreen">
             <div><h1>Degen Hangman</h1></div>
-            <div id="score"><h3>Your Current Score: 0</h3></div>
+            <div id="score"></div>
             <div class="gameWord" id="gameWord"></div>
             <div><img id="gameImage" src="assets/images/lvl0.png"/></div>
             <div class="alphabetsContainer">
@@ -60,9 +61,10 @@
         </div>
         <!-- GameOver Screen-->
         <div class= "gameOverScreen" id="gameOverScreen">
-            <div id="gameOverHeader"><h1>placeholder</h1></div>
+            <div id="gameOverHeader"></div>
             <div><img id="gameOverImage" src=""/></div>
-            <button id="restartButton" onclick="reloadScreen()">Reload Game</button>
+            <div id="gameOverWord"></div>
+            <button id="restartButton" onclick="reloadScreen()">Play Again</button>
         </div>
     </div>
 </body>
